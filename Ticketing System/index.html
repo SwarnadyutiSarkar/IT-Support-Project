@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticketing System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Ticketing System</h1>
+    <ul>
+        {% for ticket in tickets %}
+            <li>{{ ticket[1] }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/create_ticket">Create Ticket</a>
+</body>
+</html>
