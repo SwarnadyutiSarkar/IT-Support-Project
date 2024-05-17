@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLA Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>SLA Management</h1>
+    <div>
+        <h2>Add New SLA</h2>
+        <form id="addSlaForm">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name"><br>
+            <label for="description">Description:</label><br>
+            <textarea id="description" name="description"></textarea><br>
+            <label for="start_date">Start Date:</label><br>
+            <input type="date" id="start_date" name="start_date"><br>
+            <label for="end_date">End Date:</label><br>
+            <input type="date" id="end_date" name="end_date"><br>
+            <button type="submit">Add SLA</button>
+        </form>
+    </div>
+    <div>
+        <h2>SLAs</h2>
+        <ul id="slaList">
+            {% for sla in slas %}
+                <li>
+                    <h3>{{ sla.name }}</h3>
+                    <p>{{ sla.description }}</p>
+                    <p>Start Date: {{ sla.start_date }}</p>
+                    <p>End Date: {{ sla.end_date }}</p>
+                    <button onclick="deleteSla({{ sla.id }})">Delete</button>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
